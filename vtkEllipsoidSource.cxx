@@ -29,7 +29,7 @@
 #include "vtkCellArray.h"
 #include "vtkPointData.h"
 
-vtkCxxRevisionMacro(vtkEllipsoidSource, "$Revision: 1.70 $");
+//vtkCxxRevisionMacro(vtkEllipsoidSource, "$Revision: 1.70 $");
 vtkStandardNewMacro(vtkEllipsoidSource);
 
 namespace //anonymous
@@ -357,7 +357,12 @@ int vtkEllipsoidSource::RequestData(
   vtkSmartPointer<vtkTransformPolyDataFilter> transformFilter = 
       vtkSmartPointer<vtkTransformPolyDataFilter>::New();
   
+#if VTK_MAJOR_VERSION <= 5
   transformFilter->SetInput(spherePolyData);
+#else
+  transformFilter->SetInputData(spherePolyData);
+#endif
+
   transformFilter->SetTransform(this->EllipsoidTransform);
   transformFilter->Update();
   

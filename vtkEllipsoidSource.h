@@ -23,16 +23,23 @@
 
 #include "vtkPolyDataAlgorithm.h"
 #include "vtkSmartPointer.h"
+#if VTK_MAJOR_VERSION > 5
+#include "vtkFiltersSourcesModule.h" // For export macro
+#endif
 
 class vtkTransform;
 class vtkSphereSource;
 
 #define VTK_MAX_SPHERE_RESOLUTION 1024
 
-class VTK_GRAPHICS_EXPORT vtkEllipsoidSource : public vtkPolyDataAlgorithm 
+#if VTK_MAJOR_VERSION <= 5
+	class VTK_GRAPHICS_EXPORT vtkEllipsoidSource : public vtkPolyDataAlgorithm
+#else
+	class VTKFILTERSSOURCES_EXPORT vtkEllipsoidSource : public vtkPolyDataAlgorithm
+#endif
 {
 public:
-  vtkTypeRevisionMacro(vtkEllipsoidSource,vtkPolyDataAlgorithm);
+  vtkTypeMacro(vtkEllipsoidSource,vtkPolyDataAlgorithm);
   void PrintSelf(ostream& os, vtkIndent indent);
 
   static vtkEllipsoidSource *New();
