@@ -16,3 +16,4 @@ PROJECT(vtkEllipsoidSource)
 
 
 add_library(${PROJECT_NAME} vtkEllipsoidSource.cxx vtkEllipsoidSource.h)
+target_link_libraries(${PROJECT_NAME} ${VTK_LIBRARIES})
