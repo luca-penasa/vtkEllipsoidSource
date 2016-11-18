@@ -14,6 +14,7 @@ PROJECT(vtkEllipsoidSource)
 #GUI_RESOURCE_FILES vtkEllipsoidSource.xml
 #)
 
+#set(WINDOWS_EXPORT_ALL_SYMBOLS ON)
 
-add_library(${PROJECT_NAME} vtkEllipsoidSource.cxx vtkEllipsoidSource.h)
+add_library(${PROJECT_NAME} STATIC vtkEllipsoidSource.cxx vtkEllipsoidSource.h)
 target_link_libraries(${PROJECT_NAME} ${VTK_LIBRARIES})
