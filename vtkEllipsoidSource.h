@@ -40,7 +40,7 @@ class vtkSphereSource;
 {
 public:
   vtkTypeMacro(vtkEllipsoidSource,vtkPolyDataAlgorithm);
-  void PrintSelf(ostream& os, vtkIndent indent);
+  void PrintSelf(ostream& os, vtkIndent indent) override;
 
   static vtkEllipsoidSource *New();
 
@@ -122,7 +122,7 @@ protected:
   vtkEllipsoidSource(int res=8);
   ~vtkEllipsoidSource();
   
-  int RequestData(vtkInformation *, vtkInformationVector **, vtkInformationVector *);
+  int RequestData(vtkInformation *, vtkInformationVector **, vtkInformationVector *)  override;
 
   double Center[3];
   int ThetaResolution;
